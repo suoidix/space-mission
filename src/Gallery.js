@@ -9,7 +9,12 @@ function Gallery() {
     const [setUrl, data, loading, setLoading, error] = useAxios();
 
     useEffect(() => {
-        setUrl('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=Lc6mCmy8pmn55pfWyTeOUCytfdZvsJsUqRhtowWL');
+        const apiKey = process.env.REACT_APP_NASA_API_KEY;
+
+
+        const apiUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${apiKey}`;
+
+        setUrl(apiUrl);
         setLoading(true);
     }, []);
 
